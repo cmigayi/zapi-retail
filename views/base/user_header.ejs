@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/style.css">
+  <link rel="stylesheet" type="text/css" href="assets/user_main.css">
+    <link rel="stylesheet" type="text/css" href="assets/dashboard.css">
+  <title></title>
+</head>
+<body>
+  <header>
+    <div class="logo float-left">
+      <img src="images/logo-label-white.png"/>
+    </div>
+    <div class="menu clearfix">
+      <div class="menu-top">
+        <ul>
+          <li><a href="">Support & help</a></li>
+            <li><a href="">Settings</a></li>
+              <li><a href="">Profile</a></li>
+          <li><a href="/login">Logout</a></li>
+        </ul>
+      </div>
+      <div class="menu-bottom">
+        <ul>
+          <li>Curent business: <a href="">Cilo designs</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+  <div class="user-content">
+    <div class="user-content-menu float-left">
+      <ul>
+        <% if (page == "dashboard"){ %>
+          <li class="current"><a href="/dashboard">Dashboard</a></li>
+        <% }else{ %>
+          <li><a href="/dashboard">Dashboard</a></li>
+        <% } %>
+        <% if (page == "businesses"){ %>
+          <li class="current"><a href="/businesses">Businesses</a></li>
+        <% }else{ %>
+          <li><a href="/businesses">Businesses</a></li>
+        <% } %>
+        <% if (page == "employees"){ %>
+          <li class="current"><a href="/employees">Employees</a></li>
+        <% }else{ %>
+          <li><a href="/employees">Employees</a></li>
+        <% } %>
+        <% if (page == "suppliers"){ %>
+          <li class="current"><a href="/suppliers">Suppliers</a></li>
+        <% }else{ %>
+          <li><a href="/suppliers">Suppliers</a></li>
+        <% } %>
+        <% if (page == "credits"){ %>
+          <li class="current"><a href="/credits">Credits</a></li>
+        <% }else{ %>
+          <li><a href="/credits">Credits</a></li>
+        <% } %>
+        <% if (page == "expenses"){ %>
+          <li class="current"><a href="/expenses">Expenses</a></li>
+        <% }else{ %>
+          <li><a href="/expenses">Expenses</a></li>
+        <% } %>
+        <% if (page == "stocks"){ %>
+          <li class="current"><a href="/stocks">Stocks</a></li>
+        <% }else{ %>
+          <li><a href="/stocks">Stocks</a></li>
+        <% } %>
+        <% if (page == "sales"){ %>
+          <li class="current"><a href="/sales">Sales</a></li>
+        <% }else{ %>
+        <li><a href="/sales">Sales</a></li>
+        <% } %>
+        <li><a href="">Services</a></li>
+        <li><a href="">Products</a></li>
+        <li><a href="">Customers</a></li>
+        <li><a href="">Bills</a></li>
+        <li><a href="">Invoices</a></li>
+        <li><a href="">Receipts</a></li>
+        <li><a href="">Reports</a></li>
+      </ul>
+    </div>

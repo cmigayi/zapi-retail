@@ -1,0 +1,39 @@
+<% include base/header-less %>
+<div class="login-content">
+ <div class="login-form">
+   <div class="login-form-header">
+     <img src="images/logo-label-blue.png"/>
+   </div>
+   <h3>Sign In</h3>
+   <form action="" method="POST">
+     <div>
+       <p><label>Username:</label></p>
+       <p><input name="username" type="text" placeholder="Username:"/></p>
+     </div>
+     <div>
+       <p><label>Password:</label><p>
+       <p><input name="password" type="password" placeholder="Password:"/></p>
+     </div>
+     <div>
+       <p>
+         <input name="remember-me" type="checkbox" value="true"> Remember me
+       <p>
+     </div>
+     <div>
+       <input name="submit" type="submit" value="Sign in"/>
+     </div>
+     <div class="login-form-terms">
+       <p>
+         By clicking Sign in, you agree to our <a href="">Terms</a> and have
+         read and acknowledge our <a href="">Privacy Statement</a>.
+       </p>
+     </div>
+     <div class="login-form-forgot-password">
+       <p>
+         <a href="">I forgot my username and password</a>
+       </p>
+     </div>
+   </form>
+ </div>
+</div>
+<% include base/footer-less %>

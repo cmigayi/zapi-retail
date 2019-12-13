@@ -1,0 +1,133 @@
+<% include base/user_header %>
+<div class="user-mid-content clearfix">
+  <div class="mid-content-item">
+    <h2>Credits</h2>
+    <div class="create-page-item-link"><a href="">Create credit</a></div>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#owes">Owes</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#owed">Owed</a>
+      </li>
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div class="tab-pane container active" id="owes">
+        <h4> What you owe:</h4>
+        <div class="page-search">
+          <form>
+            <input name="item" type="text" placeholder="Search..."/>
+          </form>
+        </div>
+        <table class="table table-hover">
+          <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Amount</th>
+            <th>Created at</th>
+            <th></th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Jackson Musosi</td>
+            <td>1,500.00</td>
+            <td>21/10/2019</td>
+            <td><a href="">Edit</a>  <a>|</a>  <a href="">Delete</a></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Felix Mugo</td>
+            <td>500.00</td>
+            <td>21/10/2019</td>
+            <td><a href="">Edit</a>  <a>|</a>  <a href="">Delete</a></td>
+          </tr>
+        </table>
+        <div class="mid-content-item-footer">
+          <div>
+            <ul>
+              <li><a href="">Import</a></li>
+              <li><a href="">Export</a></li>
+              <li><a href="">Email</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-pane container fade" id="owed">
+        <h4> What you are owed:</h4>
+        <div class="page-search">
+          <form>
+            <input name="item" type="text" placeholder="Search..."/>
+          </form>
+        </div>
+        <table class="table table-hover">
+          <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Amount</th>
+            <th>Created at</th>
+            <th></th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Angela Mwikai</td>
+            <td>200.00</td>
+            <td>21/10/2019</td>
+            <td><a href="">Edit</a>  <a>|</a>  <a href="">Delete</a></td>
+          </tr>
+        </table>
+        <div class="mid-content-item-footer">
+          <div>
+            <ul>
+              <li><a href="">Import</a></li>
+              <li><a href="">Export</a></li>
+              <li><a href="">Email</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="mid-content-item">
+    <h2>Create credit</h2>
+    <div class="page-form">
+      <form>
+        <div>
+          <p><lable>Name:</label></p>
+          <p><input name="name" type="text"/></p>
+        </div>
+        <div>
+          <p><lable>Email:</label></p>
+          <p><input name="email" type="text"/></p>
+        </div>
+        <div>
+          <p><lable>Phone:</label></p>
+          <p><input name="phone" type="text"/></p>
+        </div>
+        <div>
+          <p><lable>Choose option:</label></p>
+          <p>
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+              <label class="btn btn-secondary active">
+                <input type="radio" name="options" id="owes"
+                autocomplete="off" checked> You owe this person money
+              </label>
+              <label class="btn btn-secondary">
+                <input type="radio" name="options" id="owed"
+                autocomplete="off"> This person owes you money
+              </label>
+            </div>
+          </p>
+        </div>
+        <div>
+          <input name="name" type="submit" value="Create"/>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<% include base/user_footer %>

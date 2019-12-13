@@ -1,0 +1,64 @@
+body{
+    background:#021736;
+}
+.login-content{
+  width:100%;
+}
+.login-form{
+  width: 30%;
+  margin-left:35%;
+  background:#ffffff;
+  padding:30px;
+  margin-top:30px;
+}
+.login-form-header{
+  width:100%;
+  padding:7px;
+  padding-top:0px;
+  border-bottom: #cccccc dotted 1px;
+}
+.login-form-header img{
+  width:60%;
+  margin-left:20%;
+}
+.login-form h3{
+  text-align:center;
+  font-size:30px;
+  margin:10px;
+}
+.login-form div{
+  margin-bottom:20px;
+}
+.login-form p{
+  margin:0px;
+}
+.login-form input[type="text"],.login-form input[type="password"]{
+  width:100%;
+  padding:7px;
+  border:#f2f2f2 solid 1px;
+  background:#f2f2f2;
+  border-radius:5px;
+}
+.login-form input[type='submit']{
+  width:100%;
+  padding:7px;
+  border:#0b428f solid 1px;
+  background:#0b428f;
+  border-radius:5px;
+  color:#ffffff;
+}
+.login-form-terms{
+  font-style: italic;
+  font-size:14px;
+  text-align: center;
+  padding:5px;
+  border-bottom:#cccccc dotted 1px;
+}
+.login-form-forgot-password{
+  font-size:14px;
+  text-align: center;
+}
+footer{
+  color: #ffffff;
+  text-align: center;
+}

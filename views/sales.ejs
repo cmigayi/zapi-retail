@@ -1,0 +1,228 @@
+<% include base/user_header %>
+<div class="user-mid-content clearfix">
+  <div class="mid-content-item">
+    <h2>Sales by calender</h2>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#daily">Daily</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#weekly">Weekly</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#custom">Custom</a>
+      </li>
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div class="tab-pane container active" id="daily">
+        <h4> Daily sales:</h4>
+        <table class="table table-hover">
+          <tr>
+            <th>Date</th>
+            <th>Amount</th>
+          </tr>
+          <tr>
+            <td>13/12/2019</td>
+            <td>10,150.00</td>
+          </tr>
+          <tr>
+            <td>12/12/2019</td>
+            <td>8,150.00</td>
+          </tr>
+          <tr>
+            <td>11/12/2019</td>
+            <td>9,005.00</td>
+          </tr>
+        </table>
+        <div class="mid-content-item-footer">
+          <div>
+            <ul>
+              <li><a href="">Import</a></li>
+              <li><a href="">Export</a></li>
+              <li><a href="">Email</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane container fade" id="weekly">
+        <h4> Weekly sales:</h4>
+        <table class="table table-hover">
+          <tr>
+            <th>Week</th>
+            <th>Amount</th>
+          </tr>
+          <tr>
+            <td>46</td>
+            <td>1,000,150.00</td>
+          </tr>
+          <tr>
+            <td>45</td>
+            <td>960,150.00</td>
+          </tr>
+          <tr>
+            <td>44</td>
+            <td>892,005.00</td>
+          </tr>
+        </table>
+        <div class="mid-content-item-footer">
+          <div>
+            <ul>
+              <li><a href="">Import</a></li>
+              <li><a href="">Export</a></li>
+              <li><a href="">Email</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane container fade" id="custom">
+        <h4> Custom:</h4>
+        <table class="table table-hover">
+          <tr>
+            <th>Date</th>
+            <th>Amount</th>
+          </tr>
+          <tr>
+            <td>13/12/2019</td>
+            <td>10,150.00</td>
+          </tr>
+          <tr>
+            <td>12/12/2019</td>
+            <td>8,150.00</td>
+          </tr>
+          <tr>
+            <td>11/12/2019</td>
+            <td>9,005.00</td>
+          </tr>
+        </table>
+        <div class="mid-content-item-footer">
+          <div>
+            <ul>
+              <li><a href="">Import</a></li>
+              <li><a href="">Export</a></li>
+              <li><a href="">Email</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mid-content-item">
+    <h2>Sales transactions</h2>
+    <div class="page-search">
+      <form>
+        <input name="item" type="text" placeholder="Search..."/>
+      </form>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="collapse multi-collapse" id="multiCollapseExample2">
+          <div>
+            <table class="table table-hover">
+              <tr>
+                <th></th>
+                <th>Transaction number</th>
+                <th>Total Cost</th>
+                <th>Amount paid</th>
+                <th>Balance</th>
+                <th>Payment mode</th>
+                <th>Date</th>
+                <th></th>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>0604656357673242</td>
+                <td>250</td>
+                <td>300</td>
+                <td>50</td>
+                <td>Cash</td>
+                <td>12/12/2019</td>
+                <td>
+                  <a class="table-sales-back-btn" data-toggle="collapse"
+                  aria-expanded="false" aria-controls="multiCollapseExample2"
+                  href="#multiCollapseExample2" href="#">
+                    Go back
+                  </a>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="card card-body">
+            <table class="table table-hover">
+              <tr>
+                <th></th>
+                <th>Item</th>
+                <th>Type</th>
+                <th>Quantity</th>
+                <th>Item_cost</th>
+                <th>Date</th>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>Supa loaf</td>
+                <td>Product</td>
+                <td>2</td>
+                <td>50</td>
+                <td>12/12/2019</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <table class="table table-hover table-sales-transactions">
+      <tr>
+        <th></th>
+        <th>Transaction number</th>
+        <th>Total Cost</th>
+        <th>Amount paid</th>
+        <th>Balance</th>
+        <th>Payment mode</th>
+        <th>Date</th>
+        <th></th>
+        <th></th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>0604656357673242</td>
+        <td>250</td>
+        <td>300</td>
+        <td>50</td>
+        <td>Cash</td>
+        <td>12/12/2019</td>
+        <td>
+          <a class="sales-detail-btn" data-toggle="collapse" aria-expanded="false"
+          aria-controls="multiCollapseExample2" href="#multiCollapseExample2">
+            Details...
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>0604656357673312</td>
+        <td>800</td>
+        <td>1000</td>
+        <td>200</td>
+        <td>Cash</td>
+        <td>12/12/2019</td>
+        <td>
+          <a class="sales-detail-btn" data-toggle="collapse" aria-expanded="false"
+          aria-controls="multiCollapseExample2" href="#multiCollapseExample2">
+            Details...
+          </a>
+        </td>
+      </tr>
+    </table>
+    <div class="mid-content-item-footer">
+      <div>
+        <ul>
+          <li><a href="">Import</a></li>
+          <li><a href="">Export</a></li>
+          <li><a href="">Email</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<% include base/user_footer %>

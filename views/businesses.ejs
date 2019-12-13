@@ -1,0 +1,48 @@
+<% include base/user_header %>
+<div class="user-mid-content clearfix">
+  <div class="mid-content-item">
+    <h2>Businesses</h2>
+    <div class="create-page-item-link"><a href="">Create business</a></div>
+    <div class="page-search">
+      <form>
+        <input name="item" type="text" placeholder="Search..."/>
+      </form>
+    </div>
+    <table class="table table-hover">
+      <tr><th>Name</th><th>Created at</th><th></th></tr>
+      <tr>
+        <td>Cilo designs</td>
+        <td>23/03/2019</td>
+        <td><a href="">Edit</a>  <a>|</a>  <a href="">Delete</a></td>
+      </tr>
+    </table>
+    <div class="mid-content-item-footer">
+      <div>
+        <ul>
+          <li><a href="">Import</a></li>
+          <li><a href="">Export</a></li>
+          <li><a href="">Email</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="mid-content-item">
+    <h2>Create business</h2>
+    <div class="page-form">
+      <form>
+        <div>
+          <p><lable>Business name:</label></p>
+          <p><input name="name" type="text"/></p>
+        </div>
+        <div>
+          <p><lable>Business description: (optional)</label></p>
+          <p><textarea name="description"></textarea></p>
+        </div>
+        <div>
+          <input name="name" type="submit" value="Create"/>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<% include base/user_footer %>
