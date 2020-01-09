@@ -1,0 +1,23 @@
+<% include base/user_header %>
+<div class="user-mid-content">
+  <div class="mid-content-item">
+    <div class="mid-content-item-header clearfix">
+      <h2 class="float-left">Import Business</h2>
+      <div class="create-page-item-link float-right">
+        <a href="/business">Go Back </a>
+      </div>
+    </div>
+    <div class="page-form">
+      <form action="/business/import" method="POST" enctype="multipart/form-data">
+        <div>
+          <p><lable>Import CSV file (Excel):</label></p>
+          <p><input name="file" type="file" /></p>
+        </div>
+        <div>
+          <input name="submit" type="submit" value="Import file"/>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<% include base/user_footer %>

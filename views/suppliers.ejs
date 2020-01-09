@@ -1,11 +1,18 @@
 <% include base/user_header %>
-<div class="user-mid-content clearfix">
-  <div class="mid-content-item">
-    <h2>Suppliers</h2>
-    <div class="create-page-item-link"><a href="">Create supplier</a></div>
+<div class="user-mid-content">
+  <div class="mid-content-item" id="top">
+    <div class="mid-content-item-header clearfix">
+      <h2 class="float-left">Suppliers</h2>
+      <div class="create-page-item-link float-right">
+        <a href="#create-scroll-down-form">Create supplier</a>
+      </div>
+    </div>
+    <% if(suppliers == null){ %>
+      <p>No suppliers created yet!</p>
+    <% }else{ %>
     <div class="page-search">
       <form>
-        <input name="item" type="text" placeholder="Search..."/>
+        <input id="myInput" name="item" type="text" placeholder="Search..."/>
       </form>
     </div>
     <table class="table table-hover">
@@ -17,22 +24,22 @@
         <th>Created at</th>
         <th></th>
       </tr>
+      <tbody id="myTable">
+      <% suppliers.forEach(function(supplier) { %>
       <tr>
         <td>1</td>
-        <td>Mike Doe</td>
-        <td>dmike@gmail.com</td>
-        <td>0718485173</td>
-        <td>21/10/2019</td>
-        <td><a href="">Edit</a>  <a>|</a>  <a href="">Delete</a></td>
+        <td><%= supplier.supplier_name %></td>
+        <td><%= supplier.email %></td>
+        <td><%= supplier.phone %></td>
+        <td><%= supplier.date_time %></td>
+        <td>
+          <a href="/suppliers/edit/<%= supplier.supplier_id %>">Edit</a>
+          <a>|</a>
+          <a href="/suppliers/delete/<%= supplier.supplier_id %>">Delete</a></td>
+        </td>
       </tr>
-      <tr>
-        <td>2</td>
-        <td>Mike Doe</td>
-        <td>dmike@gmail.com</td>
-        <td>0718485173</td>
-        <td>21/10/2019</td>
-        <td><a href="">Edit</a>  <a>|</a>  <a href="">Delete</a></td>
-      </tr>
+      <% }); %>
+      </tbody>
     </table>
     <div class="mid-content-item-footer">
       <div>
@@ -43,14 +50,20 @@
         </ul>
       </div>
     </div>
+    <% } %>
   </div>
-  <div class="mid-content-item">
-    <h2>Create supplier</h2>
+  <div class="mid-content-item" id="create-scroll-down-form">
+    <div class="mid-content-item-header clearfix">
+      <h2 class="float-left">Create supplier</h2>
+      <div class="back-to-top-link float-right">
+        <a href="#top">Back to top</a>
+      </div>
+    </div>
     <div class="page-form">
-      <form>
+      <form action="suppliers/create" method="POST">
         <div>
           <p><lable>Name:</label></p>
-          <p><input name="fname" type="text"/></p>
+          <p><input name="supplier_name" type="text"/></p>
         </div>
         <div>
           <p><lable>Email:</label></p>

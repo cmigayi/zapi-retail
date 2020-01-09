@@ -1,0 +1,32 @@
+<% include base/user_header %>
+<div class="user-mid-content">
+  <div class="mid-content-item">
+    <div class="mid-content-item-header clearfix">
+      <h2 class="float-left">Edit Business</h2>
+      <div class="create-page-item-link float-right">
+        <a href="/business">Go Back </a>
+      </div>
+    </div>
+    <div class="page-form">
+      <form action="/business/edit" method="POST">
+        <div>
+          <p><lable>Business name:</label></p>
+          <p><input name="name" type="text" value="<%= business.business_name %>"/></p>
+          <input name="business_id" type="hidden" value="<%= business.business_id %>"/>
+        </div>
+        <div>
+          <p><lable>Location: </label></p>
+          <p><input name="location" type="text" value="<%= business.location %>"/></p>
+        </div>
+        <div>
+          <p><lable>Country: </label></p>
+          <p><input name="country" type="text" value="<%= business.country %>"/></p>
+        </div>
+        <div>
+          <input name="submit" type="submit" value="Update"/>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<% include base/user_footer %>

@@ -1,92 +1,67 @@
 <% include base/user_header %>
-<div class="user-mid-content clearfix">
-  <div class="mid-content-item">
-    <h2>Employees</h2>
-    <div class="create-page-item-link"><a href="">Create employee</a></div>
-    <div class="page-search">
-      <form>
-        <input name="item" type="text" placeholder="Search..."/>
-      </form>
-    </div>
-    <table class="table table-hover">
-      <tr>
-        <th></th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Phone</th>
-        <th>National Id</th>
-        <th>Created at</th>
-        <th></th>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>Mike Doe</td>
-        <td>dmike@gmail.com</td>
-        <td>0718485173</td>
-        <td>27766637</td>
-        <td>21/10/2019</td>
-        <td><a href="">Edit</a>  <a>|</a>  <a href="">Delete</a></td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Mike Doe</td>
-        <td>dmike@gmail.com</td>
-        <td>0718485173</td>
-        <td>27766637</td>
-        <td>21/10/2019</td>
-        <td><a href="">Edit</a>  <a>|</a>  <a href="">Delete</a></td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Mike Doe</td>
-        <td>dmike@gmail.com</td>
-        <td>0718485173</td>
-        <td>27766637</td>
-        <td>21/10/2019</td>
-        <td><a href="">Edit</a>  <a>|</a>  <a href="">Delete</a></td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>Mike Doe</td>
-        <td>dmike@gmail.com</td>
-        <td>0718485173</td>
-        <td>27766637</td>
-        <td>21/10/2019</td>
-        <td><a href="">Edit</a>  <a>|</a>  <a href="">Delete</a></td>
-      </tr>
-      <tr>
-        <td>5</td>
-        <td>Mike Doe</td>
-        <td>dmike@gmail.com</td>
-        <td>0718485173</td>
-        <td>27766637</td>
-        <td>21/10/2019</td>
-        <td><a href="">Edit</a>  <a>|</a>  <a href="">Delete</a></td>
-      </tr>
-      <tr>
-        <td>6</td>
-        <td>Mike Doe</td>
-        <td>dmike@gmail.com</td>
-        <td>0718485173</td>
-        <td>27766637</td>
-        <td>21/10/2019</td>
-        <td><a href="">Edit</a>  <a>|</a>  <a href="">Delete</a></td>
-      </tr>
-    </table>
-    <div class="mid-content-item-footer">
-      <div>
-        <ul>
-          <li><a href="">Import</a></li>
-          <li><a href="">Export</a></li>
-          <li><a href="">Email</a></li>
-        </ul>
+<div class="user-mid-content">
+  <div class="mid-content-item" id="top">
+    <div class="mid-content-item-header clearfix">
+      <h2 class="float-left">Employees</h2>
+      <div class="create-page-item-link float-right">
+        <a href="#create-scroll-down-form">Create employee</a>
       </div>
     </div>
+    <% if(employees == null){ %>
+      <p>Employees data does not exist!</p>
+    <% }else{ %>
+      <div class="page-search">
+        <form>
+          <input id="myInput" name="item" type="text" placeholder="Search..."/>
+        </form>
+      </div>
+      <table class="table table-hover">
+        <tr>
+          <th></th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>National Id</th>
+          <th>Created at</th>
+          <th></th>
+        </tr>
+        <tbody id="myTable">
+        <% employees.forEach(function(employee) { %>
+        <tr>
+          <td>1</td>
+          <td><%= employee.firstname %> <%= employee.lastname %></td>
+          <td><%= employee.email %></td>
+          <td><%= employee.phone %></td>
+          <td><%= employee.national_id %></td>
+          <td><%= employee.date_time %></td>
+          <td>
+            <a href="/employees/edit/<%= employee.employee_id %>">Edit</a>
+            <a>|</a>
+            <a href="/employees/delete/<%= employee.employee_id %>">Delete</a></td>
+        </tr>
+        <% }); %>
+      </tbody>
+      </table>
+      <div class="mid-content-item-footer">
+        <div>
+          <ul>
+            <li><a href="">Import</a></li>
+            <li><a href="">Export</a></li>
+            <li><a href="">Email</a></li>
+          </ul>
+        </div>
+      </div>
+    <% } %>
   </div>
-  <div class="mid-content-item">
-    <h2>Create employee</h2>
+  <div class="mid-content-item" id="create-scroll-down-form">
+    <div class="mid-content-item-header clearfix">
+      <h2 class="float-left">Create employee</h2>
+      <div class="back-to-top-link float-right">
+        <a href="#top">Back to top</a>
+      </div>
+    </div>
     <div class="page-form">
-      <form>
+      <form action="employees/create" method="POST">
         <div>
           <p><lable>Firstname:</label></p>
           <p><input name="fname" type="text"/></p>

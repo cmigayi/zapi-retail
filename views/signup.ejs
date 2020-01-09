@@ -1,0 +1,50 @@
+<% include base/header-less %>
+<div class="signup-content">
+  <div class="signup-form">
+    <div class="signup-form-header">
+      <img src="../images/logo-label-blue.png"/>
+    </div>
+    <h3>Sign Up for <span><%= package %> Package</span></h3>
+    <% if(errors != null) {%>
+        <% Object.keys(errors).forEach(function(key) { %>
+          <div class="alert alert-danger alert-dismissible fade show">
+            <%= errors[key].msg %>
+          </div>
+        <% });%>
+    <% } %>
+    <form action="/signup/" method="POST">
+      <div>
+        <p><label>Firstname:</label></p>
+        <p><input name="firstname" type="text" placeholder="Firstname:"/></p>
+        <input name="package" type="hidden" value="<%= package %>"/>
+      </div>
+      <div>
+        <p><label>Lastname:</label></p>
+        <p><input name="lastname" type="text" placeholder="Lastname:"/></p>
+      </div>
+      <div>
+        <p><label>Email:</label></p>
+        <p><input name="email" type="text" placeholder="Email:"/></p>
+      </div>
+      <div>
+        <p><label>Phone number:</label><p>
+        <p><input name="phone" type="text" placeholder="Phone number:"/></p>
+      </div>
+      <div>
+        <input name="submit" type="submit" value="Sign up"/>
+      </div>
+      <div class="signup-form-terms">
+        <p>
+          By clicking Sign up, you agree to our <a href="">Terms</a> and have
+          read and acknowledge our <a href="">Privacy Statement</a>.
+        </p>
+      </div>
+      <div class="signup-form-forgot-password">
+        <p>
+          <a href="/login">Already have an account</a>
+        </p>
+      </div>
+    </form>
+</div>
+</div>
+<% include base/footer-less %>

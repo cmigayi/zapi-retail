@@ -1,0 +1,69 @@
+<% include base/user_header %>
+<div class="user-mid-content">
+  <div class="mid-content-item">
+    <div class="mid-content-item-header clearfix">
+      <h2 class="float-left">Products</h2>
+      <div class="create-page-item-link float-right">
+        <a href="">Create product</a>
+      </div>
+    </div>
+    <div class="page-search">
+      <form>
+        <input name="item" type="text" placeholder="Search..."/>
+      </form>
+    </div>
+    <table class="table table-hover">
+      <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Created at</th>
+        <th></th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Codimex</td>
+        <td>350.00</td>
+        <td>21/10/2019</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Lornarts tablets</td>
+        <td>150.00</td>
+        <td>21/10/2019</td>
+      </tr>
+    </table>
+    <div class="mid-content-item-footer">
+      <div>
+        <ul>
+          <li><a href="">Import</a></li>
+          <li><a href="">Export</a></li>
+          <li><a href="">Email</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="mid-content-item">
+    <h2>Create product</h2>
+    <div class="page-form">
+      <form>
+        <div>
+          <p><lable>Name:</label></p>
+          <p><input name="name" type="text"/></p>
+        </div>
+        <div>
+          <p><lable>Price:</label></p>
+          <p><input name="price" type="text"/></p>
+        </div>
+        <div>
+          <p><lable>Description:</label></p>
+          <p><textarea name="description" placeholder="Product description"></textarea></p>
+        </div>
+        <div>
+          <input name="submit" type="submit" value="Create"/>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<% include base/user_footer %>

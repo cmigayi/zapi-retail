@@ -1,45 +1,71 @@
 <% include base/user_header %>
-<div class="user-mid-content clearfix">
-  <div class="mid-content-item">
-    <h2>Businesses</h2>
-    <div class="create-page-item-link"><a href="">Create business</a></div>
-    <div class="page-search">
-      <form>
-        <input name="item" type="text" placeholder="Search..."/>
-      </form>
-    </div>
-    <table class="table table-hover">
-      <tr><th>Name</th><th>Created at</th><th></th></tr>
-      <tr>
-        <td>Cilo designs</td>
-        <td>23/03/2019</td>
-        <td><a href="">Edit</a>  <a>|</a>  <a href="">Delete</a></td>
-      </tr>
-    </table>
-    <div class="mid-content-item-footer">
-      <div>
-        <ul>
-          <li><a href="">Import</a></li>
-          <li><a href="">Export</a></li>
-          <li><a href="">Email</a></li>
-        </ul>
+<div class="user-mid-content">
+  <div class="mid-content-item" id="top">
+    <div class="mid-content-item-header clearfix">
+      <h2 class="float-left">Businesses</h2>
+      <div class="create-page-item-link float-right">
+        <a href="#create-scroll-down-form">Create business</a>
       </div>
     </div>
+    <% if(businesses != null) {%>
+      <div class="page-search">
+        <form>
+          <input id="myInput" name="item" type="text" placeholder="Search..."/>
+        </form>
+      </div>
+      <table class="table table-hover">
+          <tr><th>Name</th><th>Location</th><th>Created at</th><th></th></tr>
+          <tbody id="myTable">
+          <% businesses.forEach(function(business) { %>
+          <tr>
+            <td><%= business.business_name %></td>
+            <td><%= business.business_location %>, <%= business.country %></td>
+            <td><%= business.date_time %></td>
+            <td>
+              <a href="/business/edit/<%=business.business_id %>">Edit</a>
+              <a>|</a>
+              <a href="/business/delete/<%=business.business_id %>">Delete</a>
+            </td>
+          </tr>
+         <% }); %>
+        </tbody>
+      </table>
+      <div class="mid-content-item-footer">
+        <div>
+          <ul>
+            <li><a href="/business/import">Import</a></li>
+            <li><a href="/business/export">Export</a></li>
+            <li><a href="">Email</a></li>
+          </ul>
+        </div>
+      </div>
+  <% } else {%>
+    <p>No business created yet!</p>
+  <% } %>
   </div>
-  <div class="mid-content-item">
-    <h2>Create business</h2>
+  <div class="mid-content-item" id="create-scroll-down-form">
+    <div class="mid-content-item-header clearfix">
+      <h2 class="float-left">Create business</h2>
+      <div class="back-to-top-link float-right">
+        <a href="#top">Back to top</a>
+      </div>
+    </div>
     <div class="page-form">
-      <form>
+      <form action="business/create" method="POST">
         <div>
           <p><lable>Business name:</label></p>
           <p><input name="name" type="text"/></p>
         </div>
         <div>
-          <p><lable>Business description: (optional)</label></p>
-          <p><textarea name="description"></textarea></p>
+          <p><lable>Location: </label></p>
+          <p><input name="location" type="text"/></p>
         </div>
         <div>
-          <input name="name" type="submit" value="Create"/>
+          <p><lable>Country: </label></p>
+          <p><input name="country" type="text"/></p>
+        </div>
+        <div>
+          <input name="submit" type="submit" value="Create"/>
         </div>
       </form>
     </div>

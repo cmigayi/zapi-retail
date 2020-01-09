@@ -5,6 +5,13 @@
      <img src="images/logo-label-blue.png"/>
    </div>
    <h3>Sign In</h3>
+   <% if(errors != null) {%>
+       <% Object.keys(errors).forEach(function(key) { %>
+         <div class="alert alert-danger alert-dismissible fade show">
+           <%= errors[key].msg %>
+         </div>
+       <% });%>
+   <% } %>
    <form action="" method="POST">
      <div>
        <p><label>Username:</label></p>

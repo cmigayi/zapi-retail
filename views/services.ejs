@@ -1,0 +1,65 @@
+<% include base/user_header %>
+<div class="user-mid-content">
+  <div class="mid-content-item">
+    <div class="mid-content-item-header clearfix">
+      <h2 class="float-left">Services</h2>
+      <div class="create-page-item-link float-right">
+        <a href="">Create service</a>
+      </div>
+    </div>
+    <div class="page-search">
+      <form>
+        <input name="item" type="text" placeholder="Search..."/>
+      </form>
+    </div>
+    <table class="table table-hover">
+      <tr>
+        <th></th>
+        <th>Name</th>
+        <th>cost</th>
+        <th>Created at</th>
+        <th></th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>General checkup</td>
+        <td>10,500.00</td>
+        <td>21/10/2019</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Consulting</td>
+        <td>500.00</td>
+        <td>21/10/2019</td>
+      </tr>
+    </table>
+    <div class="mid-content-item-footer">
+      <div>
+        <ul>
+          <li><a href="">Import</a></li>
+          <li><a href="">Export</a></li>
+          <li><a href="">Email</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="mid-content-item">
+    <h2>Create service</h2>
+    <div class="page-form">
+      <form>
+        <div>
+          <p><lable>Name:</label></p>
+          <p><input name="name" type="text"/></p>
+        </div>
+        <div>
+          <p><lable>Cost:</label></p>
+          <p><input name="cost" type="text"/></p>
+        </div>
+        <div>
+          <input name="submit" type="submit" value="Create"/>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<% include base/user_footer %>

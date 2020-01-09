@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="assets/style.css">
-  <link rel="stylesheet" type="text/css" href="assets/dashboard.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Oxygen:700&display=swap" rel="stylesheet">
   <title></title>
 </head>
 <body>
@@ -13,11 +13,29 @@
     <div class="logo float-left">
       <img src="images/logo-label-white.png"/>
     </div>
-    <div class="menu clearfix">
+    <!-- Menu for desktop and Tablet (Does not show in mobile) -->
+    <div class="main-menu clearfix">
         <ul>
           <li><a href="">Pricing</a></li>
           <li><a href="">Support & help</a></li>
           <li><a href="/login">Login</a></li>
         </ul>
+        <div class="mobile-menu-btn float-right">
+          <img src="images/menu-icon.png"/>
+        </div>
+        <div class="mobile-cancel-menu-btn float-right">
+          <img src="images/menu-cancel-icon.png"/>
+        </div>
     </div>
   </header>
+
+  <!-- Menu for mobile (Only shows in mobile) -->
+  <div class="mobile-main-menu-content">
+    <ul>
+      <li><a href="">Pricing</a></li>
+      <li><a href="">Support & help</a></li>
+      <li><a href="/login">Login</a></li>
+    </ul>
+  </div>
+
+  <div class="navy-background"></div>

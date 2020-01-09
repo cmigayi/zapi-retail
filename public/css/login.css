@@ -1,0 +1,99 @@
+body{
+    background: #021736;
+}
+.login-content, .signup-content{
+  width:100%;
+}
+.login-form, .signup-form{
+  width: 90%;
+  margin-left: 5%;
+  background:#ffffff;
+  padding:30px;
+  margin-top:30px;
+}
+.login-form-header, .signup-form-header{
+  width:100%;
+  padding:7px;
+  padding-top:0px;
+  border-bottom: #cccccc dotted 1px;
+}
+.login-form-header img, .signup-form-header img{
+  width:60%;
+  margin-left:20%;
+}
+.login-form h3, .signup-form h3{
+  text-align:center;
+  font-size:30px;
+  margin:10px;
+}
+.signup-form h3 span{
+  font-weight: 600;
+  color: #a6a6a6;
+}
+.login-form div, .signup-form div{
+  margin-bottom:20px;
+}
+.login-form p, .signup-form p{
+  margin:0px;
+}
+.login-form input[type="text"],.login-form input[type="password"],
+.signup-form input[type="text"],.signup-form input[type="password"]{
+  width:100%;
+  padding:7px;
+  border:#f2f2f2 solid 1px;
+  background:#f2f2f2;
+  border-radius:5px;
+}
+.login-form input[type='submit'], .signup-form input[type='submit']{
+  width:100%;
+  padding:7px;
+  border:#0b428f solid 1px;
+  background:#0b428f;
+  border-radius:5px;
+  color:#ffffff;
+}
+.login-form-terms, .signup-form-terms{
+  font-style: italic;
+  font-size:14px;
+  text-align: center;
+  padding:5px;
+  border-bottom:#cccccc dotted 1px;
+}
+.login-form-forgot-password, .signup-form-forgot-password{
+  font-size:14px;
+  text-align: center;
+}
+footer{
+  color: #ffffff;
+  text-align: center;
+}
+/* Tablet Styles */
+@media only screen and (min-width: 401px) and (max-width: 1280px) {
+  .login-form, .signup-form{
+    width: 70%;
+    margin-left: 15%;
+  }
+  .login-form-header img, .signup-form-header img{
+    width: 180px;
+  }
+  .login-form input[type='submit'], .signup-form input[type='submit']{
+    width: 70%;
+    margin-left: 15%;
+  }
+}
+
+/* Desktop Styles */
+@media only screen and (min-width: 961px) {
+  .login-form {
+    width: 30%;
+    margin-left:35%;
+  }
+  .signup-form {
+    width: 40%;
+    margin-left: 30%;
+  }
+  .signup-form-header img{
+    width: 40%;
+    margin-left:30%;
+  }
+}

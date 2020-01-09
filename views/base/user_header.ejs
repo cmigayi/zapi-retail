@@ -4,17 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="assets/style.css">
-  <link rel="stylesheet" type="text/css" href="assets/user_main.css">
-    <link rel="stylesheet" type="text/css" href="assets/dashboard.css">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <link rel="stylesheet" type="text/css" href="/css/user_main.css">
+    <link rel="stylesheet" type="text/css" href="/css/dashboard.css">
   <title></title>
 </head>
 <body>
   <header>
     <div class="logo float-left">
-      <img src="images/logo-label-white.png"/>
+      <img src="/images/logo-label-white.png"/>
     </div>
-    <div class="menu clearfix">
+    <div class="menu">
       <div class="menu-top">
         <ul>
           <li><a href="">Support & help</a></li>
@@ -22,12 +22,18 @@
               <li><a href="">Profile</a></li>
           <li><a href="/login">Logout</a></li>
         </ul>
+        <!-- For mobile  -->
+        <div class="mobile-menu-btn">
+          <img src="/images/menu-icon.png"/>
+        </div>
+        <div class="mobile-cancel-menu-btn">
+          <img src="/images/menu-cancel-icon.png"/>
+        </div>
       </div>
-      <div class="menu-bottom">
-        <ul>
-          <li>Curent business: <a href="">Cilo designs</a></li>
-        </ul>
-      </div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="header-bottom clearfix">
+      <p>Business: <a href="">Cilo designs</a></p>
     </div>
   </header>
   <div class="user-content">
@@ -39,9 +45,9 @@
           <li><a href="/dashboard">Dashboard</a></li>
         <% } %>
         <% if (page == "businesses"){ %>
-          <li class="current"><a href="/businesses">Businesses</a></li>
+          <li class="current"><a href="/business">Businesses</a></li>
         <% }else{ %>
-          <li><a href="/businesses">Businesses</a></li>
+          <li><a href="/business">Businesses</a></li>
         <% } %>
         <% if (page == "employees"){ %>
           <li class="current"><a href="/employees">Employees</a></li>
@@ -71,14 +77,28 @@
         <% if (page == "sales"){ %>
           <li class="current"><a href="/sales">Sales</a></li>
         <% }else{ %>
-        <li><a href="/sales">Sales</a></li>
+          <li><a href="/sales">Sales</a></li>
         <% } %>
-        <li><a href="">Services</a></li>
-        <li><a href="">Products</a></li>
-        <li><a href="">Customers</a></li>
+        <% if (page == "services"){ %>
+          <li class="current"><a href="/services">Services</a></li>
+        <% }else{ %>
+          <li><a href="/services">Services</a></li>
+        <% } %>
+        <% if (page == "products"){ %>
+          <li class="current"><a href="/products">Products</a></li>
+        <% }else{ %>
+          <li><a href="/products">Products</a></li>
+        <% } %>
+        <% if (page == "customers"){ %>
+          <li class="current"><a href="/customers">Customers</a></li>
+        <% }else{ %>
+          <li><a href="/customers">Customers</a></li>
+        <% } %>
         <li><a href="">Bills</a></li>
         <li><a href="">Invoices</a></li>
         <li><a href="">Receipts</a></li>
         <li><a href="">Reports</a></li>
       </ul>
     </div>
+
+<div class="navy-background"></div>

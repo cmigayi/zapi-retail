@@ -1,0 +1,40 @@
+<% include base/user_header %>
+<div class="user-mid-content">
+  <div class="mid-content-item">
+    <div class="mid-content-item-header clearfix">
+      <h2 class="float-left">Edit employee</h2>
+      <div class="create-page-item-link float-right">
+        <a href="/employees">Go Back </a>
+      </div>
+    </div>
+    <div class="page-form">
+      <form action="/employees/edit" method="POST">
+          <div>
+            <p><lable>Firstname:</label></p>
+            <p><input name="fname" type="text" value="<%= employee.fname %>"/></p>
+            <input name="employee_id" type="hidden" value="<%= employee.employee_id %>"/>
+          </div>
+          <div>
+            <p><lable>Lastname:</label></p>
+            <p><input name="lname" type="text" value="<%= employee.lname %>"/></p>
+          </div>
+          <div>
+            <p><lable>Email:</label></p>
+            <p><input name="email" type="text" value="<%= employee.email %>"/></p>
+          </div>
+          <div>
+            <p><lable>Phone:</label></p>
+            <p><input name="phone" type="text" value="<%= employee.phone %>"/></p>
+          </div>
+          <div>
+            <p><lable>National Id:</label></p>
+            <p><input name="national_id" type="text" value="<%= employee.national_id %>"/></p>
+          </div>
+          <div>
+            <input name="name" type="submit" value="Edit"/>
+          </div>
+      </form>
+    </div>
+  </div>
+</div>
+<% include base/user_footer %>
