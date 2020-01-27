@@ -6,8 +6,10 @@ var bodyParser = require("body-parser");
 var businessRouter = require("./routes/business_router");
 var employeeRouter = require("./routes/employees_router");
 var supplierRouter = require("./routes/suppliers_router");
+var userProfileRouter = require("./routes/user_profile_router");
 var signupRouter = require("./routes/signup_router");
 var loginRouter = require("./routes/login_router");
+var logoutRouter = require("./routes/logout_router");
 
 var app = express();
 
@@ -25,8 +27,10 @@ app.get("", function(req, res){
 app.use("/business", businessRouter);
 app.use("/employees", employeeRouter);
 app.use("/suppliers", supplierRouter);
+app.use("/user_profile", userProfileRouter);
 app.use("/signup", signupRouter);
 app.use("/login", loginRouter);
+app.use("/logout", logoutRouter);
 
 app.get("/dashboard", function(req, res){
   res.render("dashboard",{ page:"dashboard" });

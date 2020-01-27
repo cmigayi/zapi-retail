@@ -20,18 +20,19 @@ business.get("/", function(req, res){
     method: 'GET'
   }
   request.post(options, function(err, response, body){
-    if(response == null){
-      console.log("The server did not respond");
-      res.redirect("../../error");
+    if(response != null){
+      console.log(response.statusCode);
+      if(response.statusCode != 200){
+        console.log(err);
+      }
+      json = JSON.parse(body);
+      response_status = json.content[0].info[0].status;
+      response_data = json.content[0].businesses[0];
+      console.log(json.content[0].info[0]);
     }
-    console.log(response.statusCode);
-    if(response.statusCode != 200){
-      console.log(err);
-    }
-    json = JSON.parse(body);
-    response_status = json.content[0].info[0].status;
-    response_data = json.content[0].businesses[0];
-    console.log(json.content[0].info[0]);
+    console.log("The server did not respond");
+    //res.redirect("../../error");
+
     res.render("businesses",{ page:"businesses", businesses:response_data });
   });
 });

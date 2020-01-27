@@ -37,4 +37,29 @@ var authUser = (user, callback)=> {
   });
 }
 
-module.exports = {createUser, authUser};
+var logoutUser = (callback) => {
+  let options = {
+    url: base_url+"/user_logout.php/zapi-v1"
+  }
+  request.get(options, function(err, response, body){
+    console.log("test"+body);
+    return callback(body);
+  });
+}
+
+var getUser = (callback) => {
+  let options = {
+    url: base_url+"/user_info.php/zapi-v1"
+  }
+  request.get(options, function(err, response, body){
+    console.log("test"+body);
+    return callback(body);
+  });
+}
+
+module.exports = {
+  createUser,
+  authUser,
+  logoutUser,
+  getUser
+};

@@ -42,9 +42,11 @@ var createUser = (req, res) => {
 }
 
 var loginUser = (req, res) => {
-  try{
+
     let errors = validationResult(req);
     let sys_errors = {};
+
+  try{
     if(!errors.isEmpty()){
       console.log(errors.array());
       res.render("login", {"errors": errors.array()});
@@ -58,7 +60,7 @@ var loginUser = (req, res) => {
         res.render("login", {"errors": sys_errors});
         return;
       }
-      
+
       let json = JSON.parse(result);
 
       if(json.content[0].info[0].status == false){
@@ -75,4 +77,61 @@ var loginUser = (req, res) => {
   }
 }
 
-module.exports = {createUser, loginUser, validateUser }
+var logoutUser = (req, res) => {
+  try{
+    userModel.logoutUser(function(result){
+      if(result === undefined){
+        console.log("Sorry, the data server is not responding. Contact support.");
+        sys_errors = [{"msg": "Sorry, the data server is not responding. Contact support."}];
+        console.log(sys_errors);
+        res.render("login", {"errors": sys_errors});
+        return;
+      }
+
+      let json = JSON.parse(result);
+
+      if(json.content[0].info[0].status == false){
+        console.log("Logout failed.");
+        return;
+      }
+      res.render("login", { page:"login" });
+    });
+  }catch(error){
+    res.send("There was an error "+error);
+  }
+}
+
+var getUser = (req, res) => {
+  try{
+    userModel.getUser(function(result){
+      if(result === undefined){
+        console.log("Sorry, the data server is not responding. Contact support.");
+        sys_errors = [{"msg": "Sorry, the data server is not responding. Contact support."}];
+        console.log(sys_errors);
+        res.render("login", {"errors": sys_errors});
+        return;
+      }
+
+      let json = JSON.parse(result);
+      let json_status = json.content[0].info[0].status;
+      let json_content = json.content[0].user[0];
+
+      if(json_status == false || json_content == null){
+        console.log("Retrieving user info failed.");
+        return;
+      }
+      console.log("User: "+json_content);      
+      res.render("user_profile", {page:"user_profile", user: json_content});
+    });
+  }catch(error){
+    res.send("There was an error "+error);
+  }
+}
+
+module.exports = {
+  createUser,
+  loginUser,
+  logoutUser,
+  validateUser,
+  getUser
+}
