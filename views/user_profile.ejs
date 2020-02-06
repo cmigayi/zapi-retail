@@ -4,19 +4,26 @@
       <div class="mid-content-item-header clearfix">
         <h2 class="float-left">User profile</h2>
         <div class="create-page-item-link float-right">
-          <a href="/employees">Go Back </a>
+          <a href="/">Go Back </a>
         </div>
       </div>
       <div class="page-form">
-        <form action="/employees/edit" method="POST">
+        <% if(errors != null) {%>
+            <% Object.keys(errors).forEach(function(key) { %>
+              <div class="alert alert-danger alert-dismissible fade show">
+                <%= errors[key].msg %>
+              </div>
+            <% });%>
+        <% } %>
+        <form action="/user_profile/" method="POST">
             <div>
               <p><lable>Firstname:</label></p>
-              <p><input name="fname" type="text" value="<%= user.firstname %>"/></p>
+              <p><input name="fname" type="text" value="<%= user.fname %>"/></p>
               <input name="user_id" type="hidden" value="<%= user.user_id %>"/>
             </div>
             <div>
               <p><lable>Lastname:</label></p>
-              <p><input name="lname" type="text" value="<%= user.lastname %>"/></p>
+              <p><input name="lname" type="text" value="<%= user.lname %>"/></p>
             </div>
             <div>
               <p><lable>Email:</label></p>
@@ -27,7 +34,7 @@
               <p><input name="phone" type="text" value="<%= user.phone %>"/></p>
             </div>
             <div>
-              <input name="name" type="submit" value="Edit"/>
+              <input type="submit" value="Edit"/>
             </div>
         </form>
       </div>

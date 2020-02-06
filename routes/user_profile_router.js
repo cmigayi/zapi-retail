@@ -8,9 +8,10 @@ user_profile.get(
   userController.getUser
 );
 
-// user_profile.post(
-//   "/",
-//   userController.updateUser
-// );
+user_profile.post(
+  "/",
+  userController.validateUser('updateUser'),
+  userController.updateUser
+);
 
 module.exports = user_profile;

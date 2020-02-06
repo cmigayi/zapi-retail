@@ -1,0 +1,90 @@
+<% include base/user_header %>
+  <div class="user-mid-content">
+    <div class="mid-content-item">
+      <div class="mid-content-item-header clearfix">
+        <h2 class="float-left">Permissions settings</h2>
+        <div class="create-page-item-link float-right">
+          <a href="/">Add permission </a>
+        </div>
+      </div>
+      <div class="permission-group">
+        Group-Type: Manager
+      </div>
+      <div class="permission-list">
+        <ul>
+          <li><a href="">Add employee</a></li>
+          <li><a href="">Edit employee</a></li>
+          <li><a href="">Make sale</a></li>
+          <li><a href="">Add stock</a></li>
+          <li><a href="">Add customer</a></li>
+          <li><a href="">Edit customer</a></li>
+          <li><a href="">Delete customer</a></li>
+          <li><a href="">Add credit</a></li>
+          <li><a href="">Edit credit</a></li>
+          <li><a href="">Add Supplier</a></li>
+          <li><a href="">Edit Supplier</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="mid-content-item">
+      <div class="mid-content-item-header clearfix">
+        <h2 class="float-left">Payment settings</h2>
+        <div class="create-page-item-link float-right">
+          <a href="/">Payment policy </a>
+        </div>
+      </div>
+      <div class="page-form">
+        <% if(errors != null) {%>
+            <% Object.keys(errors).forEach(function(key) { %>
+              <div class="alert alert-danger alert-dismissible fade show">
+                <%= errors[key].msg %>
+              </div>
+            <% });%>
+        <% } %>
+        <form action="" method="POST">
+            <div>
+              <p><lable>Payment mode:</label></p>
+              <p>
+                <select>
+                  <option>Mpesa</option>
+                </select>
+              </p>
+            </div>
+            <div>
+              <p><lable>Phone:</label></p>
+              <p><input name="phone" type="text" value=""/></p>
+            </div>
+            <div>
+              <input type="submit" value="Edit"/>
+            </div>
+        </form>
+      </div>
+    </div>
+    <div class="mid-content-item">
+      <div class="mid-content-item-header clearfix">
+        <h2 class="float-left">Password settings</h2>
+      </div>
+      <div class="page-form">
+        <% if(errors != null) {%>
+            <% Object.keys(errors).forEach(function(key) { %>
+              <div class="alert alert-danger alert-dismissible fade show">
+                <%= errors[key].msg %>
+              </div>
+            <% });%>
+        <% } %>
+        <form action="" method="POST">
+            <div>
+              <p>
+                <lable>Enter your current password: </label>
+                <i>(The new password will be sent to your registered email)</i>
+              </p>
+              <p><input name="password" type="password" value=""/></p>
+            </div>
+            <div>
+              <input type="submit" value="Generate new password"/>
+            </div>
+        </form>
+    </div>
+  </div>  
+</div>
+<% include base/user_footer %>

@@ -57,6 +57,26 @@ html[xmlns] .clearfix {
   font-weight:600;
 }
 
+/* Settings page */
+.permission-group{
+  width:100%;
+  padding:7px;
+  background:#f2f2f2;
+  border:#f2f2f2 solid 1px;
+  border-bottom:#dbdbdb solid 2px;
+}
+.permission-list{
+  width:100%;
+  height: 250px;
+  overflow: scroll;
+  margin-top:5px;
+  padding:7px;
+  border:#f2f2f2 solid 1px;
+}
+.permission-list a{
+  color: #000000;
+}
+
 /* Mobile Styles */
 @media only screen and (max-width: 480px) {
   .mid-content-item-header h2{
@@ -125,7 +145,10 @@ html[xmlns] .clearfix {
   font-weight: 600;
   color: #949494;
 }
-.page-form input[type="text"],.page-form textarea,.page-form input[type="password"]{
+.page-form input[type="text"],
+.page-form textarea,
+select,
+.page-form input[type="password"]{
   width:100%;
   padding:10px;
   border:#f2f2f2 solid 1px;

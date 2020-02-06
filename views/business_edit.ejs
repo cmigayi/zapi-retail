@@ -8,10 +8,10 @@
       </div>
     </div>
     <div class="page-form">
-      <form action="/business/edit" method="POST">
+      <form action="/business/update" method="POST">
         <div>
           <p><lable>Business name:</label></p>
-          <p><input name="name" type="text" value="<%= business.business_name %>"/></p>
+          <p><input name="name" type="text" value="<%= business.name %>"/></p>
           <input name="business_id" type="hidden" value="<%= business.business_id %>"/>
         </div>
         <div>

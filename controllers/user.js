@@ -17,6 +17,14 @@ var validateUser = (method) => {
         check('password', "Password is not correct").isLength({min:6})
       ]
     }
+    case 'updateUser': {
+      return [
+        check('fname', "Firstname doesn't exist").isAlpha(),
+        check('lname', "Lastname doesn't exist").isAlpha(),
+        check('email', "Email is invalid").exists().isEmail(),
+        check('phone', "Phone is invalid").optional().isInt()
+      ]
+    }
   }
 }
 
@@ -70,7 +78,12 @@ var loginUser = (req, res) => {
         res.render("login", {"errors": sys_errors });
         return;
       }
-      res.render("dashboard", { page:"dashboard" });
+      //console.log();
+      req.session.key = json.content[0].user[0];
+      console.log(json.content[0].user[0]);
+      if(req.session.key){
+        res.render("dashboard", { page:"dashboard" });
+      }
     });
   }catch(error){
     res.send("There was an error"+error);
@@ -108,7 +121,7 @@ var getUser = (req, res) => {
         console.log("Sorry, the data server is not responding. Contact support.");
         sys_errors = [{"msg": "Sorry, the data server is not responding. Contact support."}];
         console.log(sys_errors);
-        res.render("login", {"errors": sys_errors});
+        //res.render("login", {"errors": sys_errors});
         return;
       }
 
@@ -120,8 +133,40 @@ var getUser = (req, res) => {
         console.log("Retrieving user info failed.");
         return;
       }
-      console.log("User: "+json_content);      
-      res.render("user_profile", {page:"user_profile", user: json_content});
+      console.log("User: "+json_content);
+      res.render("user_profile", {page:"user_profile", "errors": null, user: json_content});
+    });
+  }catch(error){
+    res.send("There was an error "+error);
+  }
+}
+
+var updateUser = (req, res) => {
+  try{
+    let errors = validationResult(req);
+    if(!errors.isEmpty()){
+      console.log("errors: "+errors);
+      return;
+    }
+    userModel.updateUser(req.body, function(result){
+      if(result === undefined){
+        console.log("Sorry, the data server is not responding. Contact support.");
+        sys_errors = [{"msg": "Sorry, the data server is not responding. Contact support."}];
+        console.log(sys_errors);
+        //res.render("login", {"errors": sys_errors});
+        return;
+      }
+
+      let json = JSON.parse(result);
+      let json_status = json.content[0].info[0].status;
+      let json_content = json.content[0].user[0];
+
+      if(json_status == false || json_content == null){
+        console.log("Retrieving user info failed.");
+        return;
+      }
+      console.log("User: "+json_content);
+      res.render("user_profile", {page:"user_profile", "errors": null, user: json_content});
     });
   }catch(error){
     res.send("There was an error "+error);
@@ -133,5 +178,6 @@ module.exports = {
   loginUser,
   logoutUser,
   validateUser,
-  getUser
+  getUser,
+  updateUser
 }

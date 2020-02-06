@@ -1,6 +1,6 @@
 const request = require("request");
 
-var base_url = "http://192.168.100.88/zapi/web";
+var base_url = "http://localhost:8000";
 var response_status = null;
 var response_data = null;
 var json = null;
@@ -49,7 +49,7 @@ var logoutUser = (callback) => {
 
 var getUser = (callback) => {
   let options = {
-    url: base_url+"/user_info.php/zapi-v1"
+    url: base_url+"/user_info.php/zapi-v1/user/"+user.user_id,
   }
   request.get(options, function(err, response, body){
     console.log("test"+body);
@@ -57,9 +57,28 @@ var getUser = (callback) => {
   });
 }
 
+var updateUser = (user, callback) => {
+  let options = {
+    url: base_url+"/update_user.php/zapi-v1/user/"+user.user_id,
+    form: {
+      fname: user.fname,
+      lname: user.lname,
+      email: user.email,
+      phone: user.phone
+    }
+  }
+  request.post(options, function(err, response, body){
+    if(!err)
+      console.log("test"+body);
+      return callback(body);
+    console.log("Error: "+err);
+  });
+}
+
 module.exports = {
   createUser,
   authUser,
   logoutUser,
-  getUser
+  getUser,
+  updateUser
 };

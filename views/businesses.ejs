@@ -22,9 +22,9 @@
             <td><%= business.business_location %>, <%= business.country %></td>
             <td><%= business.date_time %></td>
             <td>
-              <a href="/business/edit/<%=business.business_id %>">Edit</a>
+              <a href="/business/<%=business.business_id %>/edit">Edit</a>
               <a>|</a>
-              <a href="/business/delete/<%=business.business_id %>">Delete</a>
+              <a href="/business/<%=business.business_id %>/delete">Delete</a>
             </td>
           </tr>
          <% }); %>
@@ -51,7 +51,14 @@
       </div>
     </div>
     <div class="page-form">
-      <form action="business/create" method="POST">
+      <% if(errors != null) {%>
+          <% Object.keys(errors).forEach(function(key) { %>
+            <div class="alert alert-danger alert-dismissible fade show">
+              <%= errors[key].msg %>
+            </div>
+          <% });%>
+      <% } %>
+      <form action="business/" method="POST">
         <div>
           <p><lable>Business name:</label></p>
           <p><input name="name" type="text"/></p>
