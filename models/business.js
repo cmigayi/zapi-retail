@@ -76,10 +76,23 @@ var deleteBusiness = (businessId, callback) => {
   });
 }
 
+var importBusinessFile = (strCSVData, callback) => {
+  url_d = base_url+"/import_business.php/zapi-v1/user/2/business/"+strCSVData+"/format/array";
+  let options = {
+    url: url_d,
+    method: 'POST'
+  }
+  request.post(options, function(err, response, body){
+    console.log(body);
+    return callback(err, body);
+  });
+}
+
 module.exports = {
   getBusinesses,
   getBusiness,
   createBusiness,
   updateBusiness,
-  deleteBusiness
+  deleteBusiness,
+  importBusinessFile
 }

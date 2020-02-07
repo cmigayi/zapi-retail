@@ -22,8 +22,6 @@ var validateBusiness = (method) => {
 
 const fs = require("fs");
 const fastcsv = require("fast-csv");
-const multer = require('multer');
-const csv_upload = multer({ dest: "uploads/csv/" });
 
 var createBusiness = (req, res) => {
   let errors = validationResult(req);
@@ -135,8 +133,43 @@ var deleteBusiness = (req, res) => {
       res.redirect("/business");
     });
   }catch(error){
-
+    res.send("Malfunction: "+error);
   }
+}
+
+var selectBusinessImportFile = (req, res) => {
+    res.render("business_import", { page: "businesses" });
+}
+
+var importBusinessFile = (req, res) => {
+    try{
+      var csv_file = req.file;
+      console.log(csv_file);
+      let stream = fs.createReadStream(csv_file.path);
+      let csvData = [];
+      let csvStream = fastcsv
+        .parse()
+        .on("data", function(data){
+          csvData.push(data);
+        })
+        .on("end", function(){
+          // Remove the first line: header
+          csvData.shift();
+
+          //console.log(csvData);
+          let strCSVData = csvData.join('|');
+          businessModel.importBusinessFile(strCSVData, function(err, result){
+            console.log("PHP: "+result);
+            if(result == null || undefined){
+
+            }
+            res.redirect("/business");
+          });
+        });
+        stream.pipe(csvStream);
+    }catch(err){
+      res.send("Malfunction: "+error);
+    }
 }
 
 module.exports = {
@@ -145,5 +178,7 @@ module.exports = {
   createBusiness,
   updateBusiness,
   editBusiness,
-  deleteBusiness
+  deleteBusiness,
+  selectBusinessImportFile,
+  importBusinessFile
 }
