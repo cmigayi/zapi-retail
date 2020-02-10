@@ -7,13 +7,15 @@ var response_data = null;
 var json = null;
 var url_d = null;
 
-var createBusiness = (business, callback) => {
+var createEmployee = (business, callback) => {
   let options = {
-    url: base_url+"/add_business.php/zapi-v1/user/2",
+    url: base_url+"/add_employee.php/zapi-v1/user/2",
     form: {
-      name: business.name,
-      location: business.location,
-      country: business.country
+      fname: req.body.fname,
+      lname: req.body.lname,
+      email: req.body.email,
+      phone: req.body.phone,
+      national_id: req.body.national_id
     }
   }
   request.post(options, function(err, response, body){
@@ -22,8 +24,8 @@ var createBusiness = (business, callback) => {
   });
 }
 
-var getBusinesses = (callback) => {
-  url_d = base_url+"/businesses.php/zapi-v1/user/2";
+var getEmployees = (callback) => {
+  url_d = base_url+"/employees.php/zapi-v1/user/2";
   let options = {
     url: url_d,
     method: 'GET'
@@ -34,8 +36,8 @@ var getBusinesses = (callback) => {
   });
 }
 
-var getBusiness = (businessId, callback) => {
-  url_d = base_url+"/business_info.php/zapi-v1/user/2/business/"+businessId;
+var getEmployee = (employeeId, callback) => {
+  url_d = base_url+"/employee_info.php/zapi-v1/user/2/employee/"+employeeId;
   let options = {
     url: url_d,
     method: 'GET'
@@ -46,16 +48,18 @@ var getBusiness = (businessId, callback) => {
   });
 }
 
-var updateBusiness = (business, callback) => {
-  var businessId = business.business_id;
-  url_d = base_url+"/update_business.php/zapi-v1/user/2/business/"+businessId;
+var updateEmployee = (employee, callback) => {
+  var employeeId = employee.employee_id;
+  url_d = base_url+"/update_employee.php/zapi-v1/user/2/employee/"+employeeId;
   let options = {
     url: url_d,
     form: {
-      business_id: businessId,
-      name: business.name,
-      location: business.location,
-      country: business.country
+      employee_id: employeeId,
+      fname: req.body.fname,
+      lname: req.body.lname,
+      email: req.body.email,
+      phone: req.body.phone,
+      national_id: req.body.national_id
     }
   }
   request.post(options, function(err, response, body){
@@ -64,8 +68,8 @@ var updateBusiness = (business, callback) => {
   });
 }
 
-var deleteBusiness = (businessId, callback) => {
-  url_d = base_url+"/delete_business.php/zapi-v1/user/2/business/"+businessId;
+var deleteEmployee = (employeeId, callback) => {
+  url_d = base_url+"/delete_employee.php/zapi-v1/user/2/employee/"+employeeId;
   let options = {
     url: url_d,
     method: 'DELETE'
@@ -76,8 +80,8 @@ var deleteBusiness = (businessId, callback) => {
   });
 }
 
-var importBusinessFile = (strCSVData, callback) => {
-  url_d = base_url+"/import_business.php/zapi-v1/user/2/business/"+strCSVData+"/format/array";
+var importEmployeeFile = (strCSVData, callback) => {
+  url_d = base_url+"/import_employee.php/zapi-v1/user/2/employee/"+strCSVData+"/format/array";
   let options = {
     url: url_d,
     method: 'POST'
@@ -88,8 +92,8 @@ var importBusinessFile = (strCSVData, callback) => {
   });
 }
 
-var exportBusinessFile = (callback) => {
-  url_d = base_url+"/businesses.php/zapi-v1/user/2/";
+var exportEmployeeFile = (callback) => {
+  url_d = base_url+"/employees.php/zapi-v1/user/2/";
   let options = {
     url: url_d,
     method: 'GET'
@@ -101,11 +105,11 @@ var exportBusinessFile = (callback) => {
 }
 
 module.exports = {
-  getBusinesses,
-  getBusiness,
-  createBusiness,
-  updateBusiness,
-  deleteBusiness,
-  importBusinessFile,
-  exportBusinessFile
+  getEmployees,
+  getEmployee,
+  createEmployee,
+  updateEmployee,
+  deleteEmployee,
+  importEmployeeFile,
+  exportEmployeeFile
 }

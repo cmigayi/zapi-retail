@@ -44,4 +44,14 @@ business.post(
   businessController.importBusinessFile
 );
 
+business.get(
+  "/export",
+  businessController.selectBusinessExportFile
+);
+
+business.post(
+  "/export",
+  businessController.exportBusinessFile
+);
+
 module.exports = business;

@@ -1,16 +1,16 @@
-var businessModel = require('../models/business');
+var employeeModel = require('../models/employee');
 const { check, validationResult } = require('express-validator');
 
-var validateBusiness = (method) => {
+var validateEmployee = (method) => {
   switch(method){
-    case 'createBusiness': {
+    case 'createEmployee': {
       return [
         check('name', "Business name doesn't exist").isAlpha(),
         check('location', "Location doesn't exist").isAlpha(),
         check('country', "Country doesn't exist").isAlpha()
       ]
     }
-    case 'updateBusiness': {
+    case 'updateEmployee': {
       return [
         check('name', "Business name doesn't exist").isAlpha(),
         check('location', "Location doesn't exist").isAlpha(),
@@ -23,7 +23,7 @@ var validateBusiness = (method) => {
 const fs = require("fs");
 const fastcsv = require("fast-csv");
 
-var createBusiness = (req, res) => {
+var createEmployee = (req, res) => {
   let errors = validationResult(req);
   if(!errors.isEmpty()){
     //res.render("businesses", { page:"businesses", "errors": errors.array()});
@@ -31,25 +31,25 @@ var createBusiness = (req, res) => {
   }
 
   try{
-    businessModel.createBusiness(req.body, function(result){
+    employeeModel.createEmployee(req.body, function(result){
       if(result === null){
-          res.redirect("/business#create-scroll-down-form");
+          res.redirect("/employee#create-scroll-down-form");
       }
       json = JSON.parse(result);
       result_status = json.content[0].info[0].status;
       if(result_status === false){
-        res.redirect("/business#create-scroll-down-form");
+        res.redirect("/employee#create-scroll-down-form");
       }
-      res.redirect("/business");
+      res.redirect("/employee");
     });
   }catch(error){
     res.send("Malfunction: "+error);
   }
 }
 
-var getBusinesses = (req, res) => {
+var getEmployees = (req, res) => {
   try{
-    businessModel.getBusinesses(function(err, result){
+    employeeModel.getEmployees(function(err, result){
       if(result == null){
         res.send("The server did not respond "+err);
       }
@@ -57,11 +57,11 @@ var getBusinesses = (req, res) => {
         res.send(res.statusCode+': '+err);
       }
       json = JSON.parse(result);
-      result_data = json.content[0].businesses[0];
-      res.render("businesses",{
-        page:"businesses",
+      result_data = json.content[0].employees[0];
+      res.render("employees",{
+        page:"employees",
         "errors": null,
-        businesses:result_data
+        employees:result_data
       });
     });
   }catch(error){
@@ -69,9 +69,9 @@ var getBusinesses = (req, res) => {
   }
 }
 
-var updateBusiness = (req, res) => {
+var updateEmployee = (req, res) => {
     try{
-      businessModel.updateBusiness(req.body, function(err, result){
+      employeeModel.updateEmployee(req.body, function(err, result){
         if(result == null){
           console.log("The server did not respond");
           res.send("error: "+err);
@@ -84,16 +84,16 @@ var updateBusiness = (req, res) => {
         json = JSON.parse(result);
         result_status = json.content[0].info[0].status;
         result_data = json.content[0].business[0];
-        res.render("business_edit", { page:"businesses", business: result_data });
+        res.render("employee_edit", { page:"employees", employee: result_data });
       });
     }catch(error){
       res.send("Malfunction: "+error);
     }
 }
 
-var editBusiness = (req, res) => {
+var editEmployee = (req, res) => {
   try{
-    businessModel.getBusiness(req.params.id, function(err, result){
+    employeeModel.getEmployee(req.params.id, function(err, result){
       if(result == null){
         console.log("The server did not respond");
         res.redirect("../../error");
@@ -105,17 +105,17 @@ var editBusiness = (req, res) => {
       console.log(result);
       json = JSON.parse(result);
       result_status = json.content[0].info[0].status;
-      result_data = json.content[0].business[0];
-      res.render("business_edit", { page:"businesses", business: result_data });
+      result_data = json.content[0].employee[0];
+      res.render("employee_edit", { page:"employees", employee: result_data });
     });
   }catch(error){
     res.send("Malfunction: "+error);
   }
 }
 
-var deleteBusiness = (req, res) => {
+var deleteEmployee = (req, res) => {
   try{
-    businessModel.deleteBusiness(req.params.id, function(err, result){
+    employeeModel.deleteEmployee(req.params.id, function(err, result){
       if(result == null){
         console.log("The server did not respond");
         res.redirect("../../error");
@@ -130,18 +130,18 @@ var deleteBusiness = (req, res) => {
       if(result_status == false){
         console.log("Delete process failed");
       }
-      res.redirect("/business");
+      res.redirect("/employee");
     });
   }catch(error){
     res.send("Malfunction: "+error);
   }
 }
 
-var selectBusinessImportFile = (req, res) => {
-    res.render("business_import", { page: "businesses" });
+var selectEmployeeImportFile = (req, res) => {
+    res.render("employee_import", { page: "employees" });
 }
 
-var importBusinessFile = (req, res) => {
+var importEmployeeFile = (req, res) => {
     try{
       var csv_file = req.file;
       console.log(csv_file);
@@ -158,12 +158,12 @@ var importBusinessFile = (req, res) => {
 
           //console.log(csvData);
           let strCSVData = csvData.join('|');
-          businessModel.importBusinessFile(strCSVData, function(err, result){
+          employeeModel.importEmployeeFile(strCSVData, function(err, result){
             console.log("PHP: "+result);
             if(result == null || undefined){
 
             }
-            res.redirect("/business");
+            res.redirect("/employee");
           });
         });
         stream.pipe(csvStream);
@@ -172,18 +172,18 @@ var importBusinessFile = (req, res) => {
     }
 }
 
-var selectBusinessExportFile = (req, res) => {
-    res.render("business_export", { page: "businesses" });
+var selectEmployeeExportFile = (req, res) => {
+    res.render("employee_export", { page: "employees" });
 }
 
-var exportBusinessFile = (req, res) => {
+var exportEmployeeFile = (req, res) => {
   var fileFormat = req.body.fileFormat;
-  var fileName = "my_businesses_"+Date.now()+".csv";
+  var fileName = "my_employees_"+Date.now()+".csv";
   //Date.now()
   var filePath = "./public/download/business/csv/" + fileName;
   const ws = fs.createWriteStream(filePath);
 
-  businessModel.getBusinesses(function(err, result){
+  employeeModel.getEmployees(function(err, result){
     if(result == null){
       console.log("The server did not respond");
       res.redirect("../../error");
@@ -195,19 +195,19 @@ var exportBusinessFile = (req, res) => {
     console.log(result);
     json = JSON.parse(result);
     result_status = json.content[0].info[0].status;
-    result_data = json.content[0].businesses[0];
+    result_data = json.content[0].employees[0];
 
-    let businessListPromise = new Promise(function(resolve, reject){
+    let employeeListPromise = new Promise(function(resolve, reject){
       fastcsv
         .write(result_data, { headers: true })
         .on("finish", function() {
-          console.log("Write to zapi_businesses.csv successfully!");
+          console.log("Write to zapi_employees.csv successfully!");
           res.download(filePath);
         })
         .pipe(ws);
         resolve();
     });
-    businessListPromise.then(function(data){
+    employeeListPromise.then(function(data){
       console.log(filePath);
     }).then(function(data){
       console.log("Download successful!");
@@ -216,14 +216,14 @@ var exportBusinessFile = (req, res) => {
 }
 
 module.exports = {
-  validateBusiness,
-  getBusinesses,
-  createBusiness,
-  updateBusiness,
-  editBusiness,
-  deleteBusiness,
-  selectBusinessImportFile,
-  importBusinessFile,
-  selectBusinessExportFile,
-  exportBusinessFile
+  validateEmployee,
+  getEmployees,
+  createEmployee,
+  updateEmployee,
+  editEmployee,
+  deleteEmployee,
+  selectEmployeeImportFile,
+  importEmployeeFile,
+  selectEmployeeExportFile,
+  exportEmployeeFile
 }
