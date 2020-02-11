@@ -33,9 +33,9 @@
         <td><%= supplier.phone %></td>
         <td><%= supplier.date_time %></td>
         <td>
-          <a href="/suppliers/edit/<%= supplier.supplier_id %>">Edit</a>
+          <a href="/suppliers/<%= supplier.supplier_id %>/edit">Edit</a>
           <a>|</a>
-          <a href="/suppliers/delete/<%= supplier.supplier_id %>">Delete</a></td>
+          <a href="/suppliers/<%= supplier.supplier_id %>/delete">Delete</a></td>
         </td>
       </tr>
       <% }); %>
@@ -44,8 +44,8 @@
     <div class="mid-content-item-footer">
       <div>
         <ul>
-          <li><a href="">Import</a></li>
-          <li><a href="">Export</a></li>
+          <li><a href="/suppliers/import">Import</a></li>
+          <li><a href="/suppliers/export">Export</a></li>
           <li><a href="">Email</a></li>
         </ul>
       </div>
@@ -60,7 +60,7 @@
       </div>
     </div>
     <div class="page-form">
-      <form action="suppliers/create" method="POST">
+      <form action="/suppliers" method="POST">
         <div>
           <p><lable>Name:</label></p>
           <p><input name="supplier_name" type="text"/></p>
