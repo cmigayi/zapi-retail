@@ -4,49 +4,45 @@
     <div class="mid-content-item-header clearfix">
       <h2 class="float-left">Expenses</h2>
       <div class="create-page-item-link float-right">
-        <a href="">Create expense</a>
+        <a href="#create-scroll-down-form">Create expense</a>
       </div>
     </div>
-    <!-- Nav tabs -->
-    <ul class="nav nav-tabs">
-      <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="#recurring">Recurring</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#non-recurring">Non-recurring</a>
-      </li>
-    </ul>
-    <!-- Tab panes -->
-    <div class="tab-content">
-      <div class="tab-pane container active" id="recurring">
-        <h4> Recurring: </h4>
+    <div class="">
+      <div class="page-search"
+        <form>
+          <select>
+            <option>All</option>
+            <option>Non-recurring</option>
+            <option>Recurring</option>
+          </select>
+        </form>
+      </div>
+      <% if(expenses != null) {%>
         <div class="page-search">
           <form>
-            <input name="item" type="text" placeholder="Search..."/>
+            <input id="myInput" name="item" type="text" placeholder="Search..."/>
           </form>
         </div>
         <table class="table table-hover">
           <tr>
-            <th></th>
-            <th>Item</th>
-            <th>Amount</th>
-            <th>Type</th>
-            <th></th>
+            <th></th><th>Item</th><th>Amount</th><th>Type</th><th>Date</th><th></th>
           </tr>
-          <tr>
-            <td>1</td>
-            <td>Rent</td>
-            <td>15,000.00</td>
-            <td>Recurring</td>
-            <td><a href="">Edit</a>  <a>|</a>  <a href="">Delete</a></td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Internet</td>
-            <td>2,500.00</td>
-            <td>Recurring</td>
-            <td><a href="">Edit</a>  <a>|</a>  <a href="">Delete</a></td>
-          </tr>
+          <tbody id="myTable">
+            <% expenses.forEach(function(expense) { %>
+              <tr>
+                <td>1</td>
+                <td><%= expense.expense_item %></td>
+                <td><%= expense.amount %></td>
+                <td><%= expense.expense_type %></td>
+                <td><%= expense.date_time %></td>
+                <td>
+                  <a href="/expenses/<%= expense.expense_id %>/edit/">Edit</a>
+                  <a>|</a>
+                  <a href="/expenses/<%= expense.expense_id %>/delete/">Delete</a>
+                </td>
+              </tr>
+             <% }); %>
+          </tbody>
         </table>
         <div class="mid-content-item-footer">
           <div>
@@ -57,54 +53,18 @@
             </ul>
           </div>
         </div>
+       <%}else{%>
+         <div>No expenses</div>
+       <%}%>
       </div>
-
-      <div class="tab-pane container fade" id="non-recurring">
-        <h4> None-recurring: </h4>
-        <div class="page-search">
-          <form>
-            <input name="item" type="text" placeholder="Search..."/>
-          </form>
-        </div>
-        <table class="table table-hover">
-          <tr>
-            <th></th>
-            <th>Item</th>
-            <th>Amount</th>
-            <th>Type</th>
-            <th>Date</th>
-            <th></th>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Printer ink</td>
-            <td>1,500.00</td>
-            <td>Non-recurring</td>
-            <td>21/11/2019</td>
-            <td><a href="">Edit</a>  <a>|</a>  <a href="">Delete</a></td>
-          </tr>
-        </table>
-        <div class="mid-content-item-footer">
-          <div>
-            <ul>
-              <li><a href="">Import</a></li>
-              <li><a href="">Export</a></li>
-              <li><a href="">Email</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
     </div>
-
-  </div>
-  <div class="mid-content-item">
+  <div class="mid-content-item" id="create-scroll-down-form">
     <h2>Create expense</h2>
     <div class="page-form">
-      <form>
+      <form  action="expenses/" method="POST">
         <div>
           <p><lable>Item name:</label></p>
-          <p><input name="item" type="text"/></p>
+          <p><input name="expense_item" type="text"/></p>
         </div>
         <div>
           <p><lable>Amount:</label></p>
@@ -115,12 +75,12 @@
           <p>
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
               <label class="btn btn-secondary active">
-                <input type="radio" name="options" id="recurring"
-                autocomplete="off" checked> Recurring
+                <input type="radio" name="expense_type" id="recurring"
+                autocomplete="Recurring" value="Recurring" checked> Recurring
               </label>
               <label class="btn btn-secondary">
-                <input type="radio" name="options" id="non-recurring"
-                autocomplete="off"> Non-recurring
+                <input type="radio" name="expense_type" id="non-recurring"
+                value="Non-recurring"> Non-recurring
               </label>
             </div>
           </p>

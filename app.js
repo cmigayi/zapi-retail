@@ -11,6 +11,7 @@ var client = redis.createClient();
 var businessRouter = require("./routes/business_router");
 var employeeRouter = require("./routes/employees_router");
 var supplierRouter = require("./routes/suppliers_router");
+var expenseRouter = require("./routes/expenses_router");
 var userProfileRouter = require("./routes/user_profile_router");
 var settingRouter = require("./routes/setting_router");
 var signupRouter = require("./routes/signup_router");
@@ -42,6 +43,7 @@ app.get("", function(req, res){
 app.use("/business", businessRouter);
 app.use("/employees", employeeRouter);
 app.use("/suppliers", supplierRouter);
+app.use("/expenses", expenseRouter);
 app.use("/user_profile", userProfileRouter);
 app.use("/settings", settingRouter);
 app.use("/signup", signupRouter);
@@ -54,10 +56,6 @@ app.get("/dashboard", function(req, res){
 
 app.get("/credits", function(req, res){
   res.render("credits", { page:"credits" });
-});
-
-app.get("/expenses", function(req, res){
-  res.render("expenses", { page:"expenses" });
 });
 
 app.get("/stocks", function(req, res){

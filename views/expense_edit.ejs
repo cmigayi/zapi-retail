@@ -1,0 +1,44 @@
+<% include base/user_header %>
+<div class="user-mid-content">
+  <div class="mid-content-item">
+    <div class="mid-content-item-header clearfix">
+      <h2 class="float-left">Edit expense</h2>
+      <div class="create-page-item-link float-right">
+        <a href="/expenses">Go Back </a>
+      </div>
+    </div>
+    <div class="page-form">
+      <form action="/expenses/update" method="POST">
+        <div>
+          <p><lable>Item name:</label></p>
+          <p><input name="expense_item" type="text" value="<%= expense.expense_item %>"/></p>
+          <input name="expense_id" type="hidden" value="<%= expense.expense_id %>"/>
+          <input name="business_id" type="hidden" value="<%= expense.business_id %>"/>
+        </div>
+        <div>
+          <p><lable>Amount:</label></p>
+          <p><input name="amount" type="text" value="<%= expense.amount %>"/></p>
+        </div>
+        <div>
+          <p><lable>Change option:</label></p>
+          <p>
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+              <label class="btn btn-secondary active">
+                <input type="radio" name="expense_type" id="recurring"
+                autocomplete="<%= expense.expense_type %>" value="Recurring" checked> Recurring
+              </label>
+              <label class="btn btn-secondary">
+                <input type="radio" name="expense_type" id="non-recurring"
+                value="Non-recurring"> Non-recurring
+              </label>
+            </div>
+          </p>
+        </div>
+        <div>
+          <input name="name" type="submit" value="Update"/>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<% include base/user_footer %>
