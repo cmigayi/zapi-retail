@@ -4,9 +4,10 @@
     <div class="mid-content-item-header clearfix">
       <h2 class="float-left">Stocks</h2>
       <div class="create-page-item-link float-right">
-        <a href="">Create stock</a>
+        <a href="#create-scroll-down-form">Create stock</a>
       </div>
     </div>
+    <% if(stocks != null){ %>
     <div class="page-search">
       <form>
         <input name="item" type="text" placeholder="Search..."/>
@@ -19,18 +20,15 @@
         <th>Total</th>
         <th></th>
       </tr>
-      <tr>
-        <td>1</td>
-        <td>Colgate</td>
-        <td>3</td>
-        <td><a href="">Edit</a>  <a>|</a>  <a href="">Delete</a></td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Aquafresh</td>
-        <td>3</td>
-        <td><a href="">Edit</a>  <a>|</a>  <a href="">Delete</a></td>
-      </tr>
+      <tbody id="myTable">
+        <% stocks.forEach(function(stock) { %>
+          <tr>
+            <td>1</td>
+            <td><%= stock.product_name %></td>
+            <td><%= stock.quantity %></td>
+            <td><a href="">Edit</a>  <a>|</a>  <a href="">Delete</a></td>
+          </tr>
+        <% }); %>
     </table>
     <div class="mid-content-item-footer">
       <div>
@@ -41,11 +39,14 @@
         </ul>
       </div>
     </div>
+    <%}else{ %>
+      <div>No stocks</div>
+    <%}%>
   </div>
-  <div class="mid-content-item">
+  <div class="mid-content-item" id="create-scroll-down-form">
     <h2>Add stock</h2>
     <div class="page-form">
-      <form>
+      <form action="stocks/" method="POST">
         <div>
           <p>
             <div class="form-group">
